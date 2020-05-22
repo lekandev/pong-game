@@ -27,8 +27,8 @@ int ballHeight = 40;
 
 //speed of balls
 
-int xSpeed = -2;
-int ySpeed = 2;
+int xSpeed = -8;
+int ySpeed = 9;
 
 //ball radius = ball height and width/2
 
@@ -40,8 +40,8 @@ int textsize = 45;
 
 //scores of both players
 
-int score1 = 7;
-int score2 = 34;
+int player1score = 0;
+int player2score = 0;
 
 //position of scores of both players
 
@@ -68,7 +68,7 @@ void draw() //runs forever
     gameOn = true;
   }
   
-  background(30); //color of the background
+  background(60); //color of the background
   
   //for the top left bat
   stroke(255);
@@ -108,23 +108,26 @@ void draw() //runs forever
   //the number scores
   fill(100);
   
-  text(score1, scoreX, scoreY);
+  text(player1score, scoreX, scoreY);
   
-  text(score2, score2X, scoreY);
+  text(player2score, score2X, scoreY);
   
-  //increment left players score if the ball hits the right wall
-  if ((ballX-radius < 0) || (ballX+radius) > screenWidth) {
-
-    score1 = score1 + 1;  //increment scorw
-   }
+  //increment player1score
+  
+  if(ballX > screenWidth){
     
-  //increment left players score if the ball hits the right wall
-  
-  if ((ballY-radius < 0) || (ballY+radius) < 0) {
-
-    score2 = score2 + 1;  //increment score
+    player1score = player1score + 1;
     
   }
+  
+  //increment player2score
+  
+  if(ballX < 0){
+    
+    player2score = player2score + 1;
+    
+  }
+  
   //stop game
   if((ballY > screenWidth) || (ballX > screenWidth) || (ballX < 0) || (ballY < 0)){
     
